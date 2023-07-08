@@ -4,15 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+When Ryan was in graduate school at Oregon State University, he started a blog with 'The Cnidae Gritty' as the title. The rhyme is weak depending on how you pronounce 'cnidae', but perfection isn't the goal, here. Communicating science informally and in recognition of all the gritty details and imperfections is the whole point. 
