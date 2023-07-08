@@ -1,4 +1,4 @@
-d---
+---
 layout: post
 title:  "Hello world"
 date:   2023-07-08 11:53:24 -0400
