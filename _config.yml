@@ -24,7 +24,9 @@ description: >- # this means to ignore newlines until "baseurl:"
   Discussion of the cnidae gritty details of biology
 url: "https://thecnidaegritty.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  rmcminds
-
+disqus:
+  shortname: thecnidaegritty
+  
 # Build settings
 theme: minima
 plugins:
