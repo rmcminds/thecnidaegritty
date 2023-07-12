@@ -26,8 +26,9 @@ layout: base
       {%- endif -%}</p>
   </header>
 
+  {% include author.html %}
+
   <div class="post-content e-content" itemprop="articleBody">
-    {% include author.html %}
     {{ content }}
   </div>
 
