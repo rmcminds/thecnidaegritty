@@ -37,9 +37,8 @@ plugins:
   - jekyll-feed
 show_excerpts: true
 
-header_pages: 
- - /_pages/about.md
- - /_pages/inatle.md
+include:
+  - _pages
  
 # Exclude from processing.
 # The following items will not be processed, by default.
