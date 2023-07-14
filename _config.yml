@@ -42,8 +42,8 @@ include:
   - _pages/bios
 
 header_pages:
-  - About
-  - iNatle
+  - _pages/about.md
+  - _pages/inatle.md
  
 # Exclude from processing.
 # The following items will not be processed, by default.
