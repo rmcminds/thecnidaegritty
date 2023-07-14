@@ -20,10 +20,10 @@
 
 title: The Cnidae Gritty
 author: Ryan McMinds
-email: r.mcminds@thecnidaegritty.com
+email: r.mcminds@thecnidaegritty.org
 description: >- # this means to ignore newlines until "baseurl:"
   Getting into the cnidae gritty details of biology
-url: "https://thecnidaegritty.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://thecnidaegritty.org" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  rmcminds
 mastodon:
 - username: thecnidaegritty
