@@ -25,6 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Getting into the cnidae gritty details of biology
 url: "https://thecnidaegritty.org" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  rmcminds
+twitter_username: thecnidaegritty
 mastodon:
 - username: thecnidaegritty
   instance: sciencemastodon.com
