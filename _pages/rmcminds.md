@@ -6,10 +6,6 @@ permalink: /about/rmcminds/
 
 Dr. McMinds is a research assistant professor in the College of Public Health at the University of South Florida. He is affiliated with the Genomics Computational Core, the Center for Global Health and Infectious Diseases Research (GHIDR), and the Department of Integrative Biology in the College of Arts & Sciences. He received his Bachelor of Science in Marine Science and Biology at the Rosenstiel School for Marine and Atmospheric Sciences (RSMAS) at the University of Miami, and his PhD in Microbiology from Oregon State University under the supervision of Dr. Rebecca Vega Thurber. He is passionate about science communication and connecting research to the immediate needs of people and our environment.
 
-<div id="twitter" style="padding-top:30px;padding-bottom:30px">
-  <a class="twitter-timeline" href="https://twitter.com/merdemicrobes?ref_src=twsrc%5Etfw">Tweets by merdemicrobes</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
 <div id="inat" style="padding-top:30px">
   <style type="text/css" media="screen">
     .inat-widget { font-family: Georgia, serif; padding: 10px; line-height: 1}
