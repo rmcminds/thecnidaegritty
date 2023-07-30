@@ -47,8 +47,8 @@ layout: default
   -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" href="mastodon.widget.css" />
-  <script type="text/javascript" src="mastodon.widget.js"></script>
+  <link rel="stylesheet" href="/assets/mastodon.widget.css" />
+  <script type="text/javascript" src="/assets/mastodon.widget.js"></script>
   <script>
   $(document).ready(function() {
   // jQUERY is required!
@@ -57,6 +57,8 @@ layout: default
       ,instance_uri    : 'https://sciencemastodon.com'
       ,access_token    : 'WgxtULgHAn8e4bBT5A_TobJDxOU_ggyeUJuDyk08Mys'
       ,account_id      : '110708302374683509'
+      ,boosts_count_icon : '<img src="/assets/web-push-icon_reblog.png" style="height: 18px;" />'
+      ,favourites_count_icon : '<img src="/assets/web-push-icon_favourite.png" style="height: 18px;" />'
       // optional parameters
       // ===================
       // - status max
