@@ -42,7 +42,7 @@ include:
   - _pages
 
 header_pages:
-  - _pages/cnidae_gritty_photo_annotator/
+  - cnidae_gritty_photo_annotator
   - _pages/about.md
  
 # Exclude from processing.
