@@ -42,7 +42,7 @@ include:
   - _pages
 
 header_pages:
-  - photo_annotator/
+  - photo_annotator/index.html
   - _pages/about.md
  
 # Exclude from processing.
