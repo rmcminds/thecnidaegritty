@@ -40,7 +40,6 @@ show_excerpts: true
 
 include:
   - _pages
-  - _pages/*
 
 header_pages:
   - _pages/photo_annotator/
