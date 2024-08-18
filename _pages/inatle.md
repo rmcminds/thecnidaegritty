@@ -4,12 +4,13 @@ title: "iNatle"
 permalink: /iNatle/
 ---
 
-<object 
-  data="https://rmcminds.shinyapps.io/inatle/"
+<iframe 
+  src="https://rmcminds.shinyapps.io/inatle/"
   width='100%'
-  height=800
-  type="text/html">
-</object>
+  height='auto'
+  max-width='100%'
+  border='none'>
+</iframe>
 
 <br>
 
