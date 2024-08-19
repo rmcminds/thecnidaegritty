@@ -38,6 +38,9 @@ plugins:
   - jekyll-feed
 show_excerpts: true
 
+exclude:
+  - scripts
+
 include:
   - _pages
 
