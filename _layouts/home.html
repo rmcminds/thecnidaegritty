@@ -11,6 +11,8 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Blog Posts" }}</h2>
+    <hr style="border-top: 1px solid #e1e4e8; border-right: none; border-bottom: none; border-left: none;">
+    <div style="padding-top:30px;"></div>
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
@@ -33,6 +35,7 @@ layout: default
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
+        <hr style="border-top: 1px solid #e1e4e8; border-right: none; border-bottom: none; border-left: none;">
       </li>
       {%- endfor -%}
     </ul>
@@ -46,6 +49,7 @@ layout: default
   </div>
   -->
 
+  <!-- commenting this out as long as I'm not really using Mastodon
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" href="/assets/mastodon.widget.css" />
   <script type="text/javascript" src="/assets/mastodon.widget.js"></script>
@@ -72,5 +76,6 @@ layout: default
   </script>
   <div style="padding-top:20px"></div>
   <div id="myTimeline" class="mastodon-timeline mastodon-timeline-dark"></div>
+  -->
   
 </div>
