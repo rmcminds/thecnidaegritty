@@ -4,9 +4,8 @@ title: iNatle_test
 permalink: /iNatle_test/
 ---
 
-<iframe id="shinyIframe" width="100%" style="border:0;"></iframe>
+<iframe onload="resizeIframe(this)" id="shinyIframe" width="100%" style="border:0;"></iframe>
 
-<!-- JavaScript to pass parameters -->
 <script>
   function getQueryParams(url) {
     let params = {};
@@ -33,30 +32,35 @@ permalink: /iNatle_test/
 
   document.getElementById('shinyIframe').src = iframeUrl;
   
-  function adjustIframeHeight() {
-    var iframe = document.getElementById('shinyIframe');
-    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-
-    var container = iframeDocument.getElementById('mycontainer');
-
+  function resizeIframeToContentSize(iframe) {
+    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    const container = iframeDocument.body; // Target the body of the iframe content
     if (container) {
-      iframe.style.height = container.scrollHeight + 'px';
+      iframe.style.height = container.scrollHeight + 'px'; // Set iframe height based on scrollHeight
     }
   }
 
-  // Wait for iframe to load its content
   document.getElementById('shinyIframe').onload = function() {
-    adjustIframeHeight();
+    // Adjust the iframe height on initial load
+    resizeIframeToContentSize(this);
 
-    // Set up the ResizeObserver to monitor changes in the container's size
-    var iframe = document.getElementById('shinyIframe');
-    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    var container = iframeDocument.getElementById('mycontainer');
+    // Watch for changes in the iframe content
+    const frameElement = this;
+    let lastScrollHeight = frameElement.contentWindow.document.body.scrollHeight;
+    let watcher;
 
-    if (container) {
-      const resizeObserver = new ResizeObserver(adjustIframeHeight);
-      resizeObserver.observe(container);
-    }
+    const watch = () => {
+      cancelAnimationFrame(watcher);
+
+      const container = frameElement.contentWindow.document.body; // Access the body of the iframe
+      if (lastScrollHeight !== container.scrollHeight) {
+        resizeIframeToContentSize(frameElement);
+      }
+      lastScrollHeight = container.scrollHeight;
+      watcher = requestAnimationFrame(watch); // Continuously check for changes
+    };
+
+    watcher = requestAnimationFrame(watch); // Start the watcher
   };
 </script>
 
