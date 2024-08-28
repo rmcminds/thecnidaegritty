@@ -35218,7 +35218,7 @@ function Viewer({
         shinyIntervalRef.current = window.setInterval(() => {
           webRProxy.runRAsync(".shiny_tick()");
         }, 100);
-        viewerFrameRef.current.src = appInfo.urlPath;
+        viewerFrameRef.current.src = appInfo.urlPath + window.location.search;;
         setAppRunningState("running");
       } catch (e) {
         setAppRunningState("errored");
@@ -35275,7 +35275,7 @@ function Viewer({
           args: [appName],
           kwargs: { dev_mode: devMode }
         });
-        viewerFrameRef.current.src = appInfo.urlPath;
+        viewerFrameRef.current.src = appInfo.urlPath + window.location.search;;
         setAppRunningState("running");
       } catch (e) {
         setAppRunningState("errored");
