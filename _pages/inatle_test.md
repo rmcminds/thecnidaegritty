@@ -4,7 +4,7 @@ title: iNatle_test
 permalink: /iNatle_test/
 ---
 
-<iframe id="shinyIframe" width="100%" height="100%" style="border:0;"></iframe>
+<iframe id="shinyIframe" width="100%" style="border:0;"></iframe>
 
 <!-- JavaScript to pass parameters -->
 <script>
@@ -34,6 +34,10 @@ permalink: /iNatle_test/
   document.getElementById('shinyIframe').src = iframeUrl;
   
   window.addEventListener('message', function(event) {
+    // Debugging: Log the event data and origin
+    console.log("Received message:", event.data);
+    console.log("From origin:", event.origin);
+    
     var iframe = document.getElementById('shinyIframe');
     iframe.style.height = event.data + 'px';
   });
