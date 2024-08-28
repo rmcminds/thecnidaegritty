@@ -33,14 +33,31 @@ permalink: /iNatle_test/
 
   document.getElementById('shinyIframe').src = iframeUrl;
   
-  window.addEventListener('message', function(event) {
-    // Debugging: Log the event data and origin
-    console.log("Received message:", event.data);
-    console.log("From origin:", event.origin);
-    
+  function adjustIframeHeight() {
     var iframe = document.getElementById('shinyIframe');
-    iframe.style.height = event.data + 'px';
-  });
+    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+    var container = iframeDocument.getElementById('mycontainer');
+
+    if (container) {
+      iframe.style.height = container.scrollHeight + 'px';
+    }
+  }
+
+  // Wait for iframe to load its content
+  document.getElementById('shinyIframe').onload = function() {
+    adjustIframeHeight();
+
+    // Set up the ResizeObserver to monitor changes in the container's size
+    var iframe = document.getElementById('shinyIframe');
+    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    var container = iframeDocument.getElementById('mycontainer');
+
+    if (container) {
+      const resizeObserver = new ResizeObserver(adjustIframeHeight);
+      resizeObserver.observe(container);
+    }
+  };
 </script>
 
 <br>
