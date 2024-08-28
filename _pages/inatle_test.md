@@ -32,6 +32,11 @@ permalink: /iNatle_test/
   }
 
   document.getElementById('shinyIframe').src = iframeUrl;
+  
+  window.addEventListener('message', function(event) {
+    var iframe = document.getElementById('shinyIframe');
+    iframe.style.height = event.data + 'px';
+  });
 </script>
 
 <br>
