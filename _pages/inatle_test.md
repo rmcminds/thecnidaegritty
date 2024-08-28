@@ -61,6 +61,7 @@ permalink: /iNatle_test/
     };
 
     watcher = requestAnimationFrame(watch); // Start the watcher
+  };
 </script>
 
 <br>
