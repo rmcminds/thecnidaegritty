@@ -4,9 +4,9 @@ title: iNatle_test
 permalink: /iNatle_test/
 ---
 
-<iframe onload="resizeIframe(this)" id="shinyIframe" width="100%" style="border:0;"></iframe>
+<iframe id="shinyIframe" width="100%" style="border:0;"></iframe>
 
-<script>
+<script>  
   function getQueryParams(url) {
     let params = {};
     let parser = new URL(url);
@@ -31,12 +31,12 @@ permalink: /iNatle_test/
   }
 
   document.getElementById('shinyIframe').src = iframeUrl;
-  
+
   function resizeIframeToContentSize(iframe) {
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const container = iframeDocument.body; // Target the body of the iframe content
+    const container = iframeDocument.getElementById('mycontainer'); // Target the specific container
     if (container) {
-      iframe.style.height = container.scrollHeight + 'px'; // Set iframe height based on scrollHeight
+      iframe.style.height = container.scrollHeight + 'px'; // Set iframe height based on the container's scrollHeight
     }
   }
 
@@ -46,13 +46,13 @@ permalink: /iNatle_test/
 
     // Watch for changes in the iframe content
     const frameElement = this;
-    let lastScrollHeight = frameElement.contentWindow.document.body.scrollHeight;
+    let lastScrollHeight = frameElement.contentWindow.document.getElementById('mycontainer').scrollHeight;
     let watcher;
 
     const watch = () => {
       cancelAnimationFrame(watcher);
 
-      const container = frameElement.contentWindow.document.body; // Access the body of the iframe
+      const container = frameElement.contentWindow.document.getElementById('mycontainer'); // Access the specific container
       if (lastScrollHeight !== container.scrollHeight) {
         resizeIframeToContentSize(frameElement);
       }
@@ -61,7 +61,6 @@ permalink: /iNatle_test/
     };
 
     watcher = requestAnimationFrame(watch); // Start the watcher
-  };
 </script>
 
 <br>
