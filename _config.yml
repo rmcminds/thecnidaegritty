@@ -46,7 +46,7 @@ include:
 
 header_pages:
   - photo_annotator/index.html
-  - _pages/inatle.md
+  - iNatle/index.html
   - _pages/about.md
  
 # Exclude from processing.
