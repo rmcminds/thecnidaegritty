@@ -47,13 +47,13 @@ permalink: /iNatle/
       const container = nestedIframeDocument.getElementById('mycontainer');
       
       if (container) {
-        iframe.style.height = container.scrollHeight + 'px';
+        iframe.style.height = Number(container.scrollHeight)+Number(5) + 'px';
       }
     } else {
       // Fallback to resizing based on the outer iframe's own content
       const container = iframeDocument.body;
       if (container) {
-        iframe.style.height = container.scrollHeight + 'px';
+        iframe.style.height = Number(container.scrollHeight)+Number(5) + 'px';
       }
     }
   }
