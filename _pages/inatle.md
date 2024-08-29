@@ -92,6 +92,7 @@ permalink: /iNatle/
   };
 </script>
 
+<p style="text-align: center>
 <br>
-
 <a style="text-align: center" href="https://github.com/rmcminds/iNatle/issues">Tell me about bugs or leave a suggestion!</a>
+</p>
