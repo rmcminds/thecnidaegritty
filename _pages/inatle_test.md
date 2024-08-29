@@ -32,35 +32,63 @@ permalink: /iNatle_test/
 
   document.getElementById('shinyIframe').src = iframeUrl;
 
+  let outerIframe = document.getElementById('shinyIframe');
+
   function resizeIframeToContentSize(iframe) {
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const container = iframeDocument.getElementById('mycontainer'); // Target the specific container
-    if (container) {
-      iframe.style.height = container.scrollHeight + 'px'; // Set iframe height based on the container's scrollHeight
+
+    // Find the nested iframe inside the outer iframe
+    const nestedIframe = iframeDocument.querySelector('iframe'); // Finds the first iframe within the outer iframe
+
+    if (nestedIframe) {
+      const nestedIframeDocument = nestedIframe.contentDocument || nestedIframe.contentWindow.document;
+      
+      // Find the largest content element within the nested iframe
+      const container = nestedIframeDocument.getElementById('mycontainer');
+      
+      if (container) {
+        iframe.style.height = container.scrollHeight + 'px';
+      }
+    } else {
+      // Fallback to resizing based on the outer iframe's own content
+      const container = iframeDocument.body;
+      if (container) {
+        iframe.style.height = container.scrollHeight + 'px';
+      }
     }
   }
 
-  document.getElementById('shinyIframe').onload = function() {
-    // Adjust the iframe height on initial load
-    resizeIframeToContentSize(this);
+  outerIframe.onload = function() {
+    resizeIframeToContentSize(outerIframe);
 
-    // Watch for changes in the iframe content
-    const frameElement = this;
-    let lastScrollHeight = frameElement.contentWindow.document.getElementById('mycontainer').scrollHeight;
+    const frameElement = outerIframe;
+    let lastScrollHeight = frameElement.contentWindow.document.body.scrollHeight;
     let watcher;
 
     const watch = () => {
       cancelAnimationFrame(watcher);
 
-      const container = frameElement.contentWindow.document.getElementById('mycontainer'); // Access the specific container
-      if (lastScrollHeight !== container.scrollHeight) {
-        resizeIframeToContentSize(frameElement);
+      // Re-target the nested iframe on every loop
+      const nestedIframe = frameElement.contentWindow.document.querySelector('iframe');
+      
+      if (nestedIframe) {
+        const container = nestedIframe.contentWindow.document.getElementById('mycontainer');
+        if (container && lastScrollHeight !== container.scrollHeight) {
+          resizeIframeToContentSize(frameElement);
+          lastScrollHeight = container.scrollHeight;
+        }
+      } else {
+        const container = frameElement.contentWindow.document.body;
+        if (lastScrollHeight !== container.scrollHeight) {
+          resizeIframeToContentSize(frameElement);
+          lastScrollHeight = container.scrollHeight;
+        }
       }
-      lastScrollHeight = container.scrollHeight;
-      watcher = requestAnimationFrame(watch); // Continuously check for changes
+
+      watcher = requestAnimationFrame(watch); 
     };
 
-    watcher = requestAnimationFrame(watch); // Start the watcher
+    watcher = requestAnimationFrame(watch);
   };
 </script>
 
