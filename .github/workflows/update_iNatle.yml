@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          Rscript -e 'install.packages("shinylive", "i18n")'
+          Rscript -e 'install.packages(c("shinylive", "i18n"))'
 
       - name: Export app with R shinylive
         run: |
