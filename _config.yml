@@ -71,6 +71,7 @@ exclude:
   - STRUCTURE.md
   - SETUP.md
   - INTEGRATION.md
+  - IMPLEMENTATION_SUMMARY.md
 
 include:
   - _pages
