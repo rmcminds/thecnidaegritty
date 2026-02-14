@@ -62,6 +62,14 @@ defaults:
 exclude:
   - scripts
   - _multilingual_content  # Exclude submodule directory from Jekyll processing
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - ARCHITECTURE.md
+  - CONTRIBUTING.md
+  - STRUCTURE.md
+  - SETUP.md
 
 include:
   - _pages

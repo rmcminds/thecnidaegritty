@@ -7,6 +7,10 @@ _site/
 .jekyll-metadata
 .sass-cache/
 
+# Bundler
+vendor/bundle/
+.bundle/
+
 # Submodule content (tracked separately)
 # _multilingual_content/  # Uncomment if using git submodule
 
