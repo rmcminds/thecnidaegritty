@@ -1,2 +1,15 @@
 *DS_Store
 *.draft.md
+
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Submodule content (tracked separately)
+# _multilingual_content/  # Uncomment if using git submodule
+
+# Temporary sync files
+*.tmp
+*.bak

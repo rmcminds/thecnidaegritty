@@ -31,6 +31,12 @@ mastodon:
   instance: sciencemastodon.com
 disqus:
   shortname: thecnidaegritty
+
+# Integration with multilingual_journal_club repository
+multilingual_integration:
+  enabled: true
+  source_repo: "https://github.com/rmcminds/multilingual_journal_club"
+  sync_schedule: "daily"
   
 # Build settings
 theme: minima
@@ -38,8 +44,24 @@ plugins:
   - jekyll-feed
 show_excerpts: true
 
+# Collections for integrated content
+collections:
+  multilingual_posts:
+    output: true
+    permalink: /multilingual/:year/:month/:day/:title/
+
+# Default settings for collections
+defaults:
+  - scope:
+      path: "_multilingual_posts"
+      type: "multilingual_posts"
+    values:
+      layout: "post"
+      source_repo: "multilingual_journal_club"
+
 exclude:
   - scripts
+  - _multilingual_content  # Exclude submodule directory from Jekyll processing
 
 include:
   - _pages

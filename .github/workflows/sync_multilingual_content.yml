@@ -1,0 +1,94 @@
+name: Sync Multilingual Content
+
+on:
+  # Run daily at 6 AM UTC to sync latest content
+  schedule:
+    - cron: '0 6 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Future: trigger from multilingual_journal_club via webhook
+  repository_dispatch:
+    types: [multilingual-content-updated]
+
+jobs:
+  sync-content:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: false  # We'll handle submodules manually
+          
+      - name: Initialize and update submodule
+        run: |
+          # Check if submodule exists
+          if [ -f .gitmodules ]; then
+            echo "Submodule configuration found, updating..."
+            git submodule update --init --remote _multilingual_content
+          else
+            echo "No submodule yet - will clone directly"
+            if [ ! -d "_multilingual_content" ]; then
+              git clone https://github.com/rmcminds/multilingual_journal_club.git _multilingual_content
+            else
+              cd _multilingual_content
+              git pull origin main
+              cd ..
+            fi
+          fi
+          
+      - name: Create multilingual posts directory
+        run: |
+          mkdir -p _multilingual_posts
+          
+      - name: Sync content to Jekyll collection
+        run: |
+          # Copy posts from multilingual_journal_club to Jekyll collection
+          if [ -d "_multilingual_content/_posts" ]; then
+            cp -r _multilingual_content/_posts/* _multilingual_posts/ 2>/dev/null || echo "No posts to sync"
+          fi
+          
+          # Add source repository metadata to each synced post
+          for file in _multilingual_posts/*.md; do
+            if [ -f "$file" ]; then
+              # Check if source_repo is already in frontmatter
+              if ! grep -q "source_repo:" "$file"; then
+                # Add source_repo to frontmatter (after the first ---)
+                sed -i '2i source_repo: multilingual_journal_club' "$file"
+              fi
+            fi
+          done
+          
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          fi
+          
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync multilingual content from multilingual_journal_club
+          
+          Automated sync of content from rmcminds/multilingual_journal_club
+          Triggered by: ${{ github.event_name }}"
+          git push
+          
+      - name: Summary
+        run: |
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ Content synchronized successfully"
+            echo "📊 Synced posts from multilingual_journal_club to _multilingual_posts/"
+          else
+            echo "ℹ️ No new content to sync"
+          fi
