@@ -51,11 +51,14 @@ jobs:
           fi
           
           # Add source repository metadata to each synced post
+          # Note: This assumes frontmatter starts with --- on line 1
+          # and inserts the source_repo field after the opening ---
           for file in _multilingual_posts/*.md; do
             if [ -f "$file" ]; then
               # Check if source_repo is already in frontmatter
               if ! grep -q "source_repo:" "$file"; then
-                # Add source_repo to frontmatter (after the first ---)
+                # Add source_repo to frontmatter after the opening ---
+                # This works on Linux (ubuntu-latest runner)
                 sed -i '2i source_repo: multilingual_journal_club' "$file"
               fi
             fi
@@ -79,9 +82,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Sync multilingual content from multilingual_journal_club
-          
-          Automated sync of content from rmcminds/multilingual_journal_club
-          Triggered by: ${{ github.event_name }}"
+
+Automated sync of content from rmcminds/multilingual_journal_club
+Triggered by: ${{ github.event_name }}"
           git push
           
       - name: Summary
