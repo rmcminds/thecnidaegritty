@@ -70,6 +70,7 @@ exclude:
   - CONTRIBUTING.md
   - STRUCTURE.md
   - SETUP.md
+  - INTEGRATION.md
 
 include:
   - _pages

@@ -93,7 +93,7 @@ Content from the [multilingual_journal_club](https://github.com/rmcminds/multili
 2. **GitHub Actions**: Automated workflow syncs content on schedule and manual trigger
 3. **Jekyll Collections**: Content appears in the `_multilingual_posts` collection
 
-For detailed workflow information, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For detailed setup and integration instructions, see [INTEGRATION.md](INTEGRATION.md).
 
 ## 🛠️ Technologies
 
@@ -105,8 +105,12 @@ For detailed workflow information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 📚 Documentation
 
+- [README.md](README.md): Project overview and quick start
 - [ARCHITECTURE.md](ARCHITECTURE.md): Detailed technical architecture
+- [INTEGRATION.md](INTEGRATION.md): Integration guide for multilingual_journal_club
 - [CONTRIBUTING.md](CONTRIBUTING.md): Contribution guidelines and workflows
+- [SETUP.md](SETUP.md): Local development setup instructions
+- [STRUCTURE.md](STRUCTURE.md): Repository structure reference
 - [About Page](https://thecnidaegritty.org/about/): Site mission and goals
 
 ## 👥 Contributing
